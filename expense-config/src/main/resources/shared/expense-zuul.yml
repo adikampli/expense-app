@@ -1,0 +1,18 @@
+server:
+   port: 9761
+eureka:
+   client:
+      service-url:
+         default-zone: http://localhost:8761/eureka
+zuul:
+   ignoredServices: '*'
+   routes:
+      order:
+         path: /order/**
+         serviceId: expense-order
+      product:
+         path: /product/**
+         serviceId: expense-product
+      store:
+         path: /store/**
+         serviceId: expense-store

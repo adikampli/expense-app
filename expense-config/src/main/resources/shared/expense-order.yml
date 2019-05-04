@@ -1,0 +1,28 @@
+spring:
+   jpa:
+      show-sql: true
+      hibernate:
+         ddl-auto: none
+   datasource:
+      url: jdbc:mysql://localhost:3306/expense
+      username: root
+      password: root
+security:
+   oauth2:
+      client:
+         clientId: browser
+         clientSecret: secret
+         accessTokenUri: http://localhost:9000/oauth/token
+         grant-type: client_credentials
+         scope: ui
+      resource:
+         user-info-uri: http://localhost:9000/users/current
+server:
+   port: 8082
+eureka:
+   client:
+      default-zone: localhost:8761/eureka
+logging:
+   level:
+      org:
+         springframework: DEBUG
