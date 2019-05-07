@@ -46,7 +46,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Bean
 	public ResourceServerTokenServices tokenServices() {
-		System.err.println("sso.getUserInfoUri(): " + sso.getUserInfoUri());
 		return new UserInfoTokenService(sso.getUserInfoUri(), sso.getClientId());
 	}
 

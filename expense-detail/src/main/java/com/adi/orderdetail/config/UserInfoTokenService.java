@@ -56,9 +56,7 @@ public class UserInfoTokenService implements ResourceServerTokenServices {
 	@Override
 	public OAuth2Authentication loadAuthentication(String accessToken)
 			throws AuthenticationException, InvalidTokenException {
-//		this.userInfoEndpointUrl = "http://localhost:9000/users/current";
 		Map<String, Object> map = getMap(this.userInfoEndpointUrl, accessToken);
-System.err.println("this.userInfoEndpointUrl: "+this.userInfoEndpointUrl);
 		if (map.containsKey("error")) {
 			this.logger.debug("userinfo returned error: " + map.get("error"));
 			throw new InvalidTokenException(accessToken);
