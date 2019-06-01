@@ -44,6 +44,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		return new OAuth2RestTemplate(clientCredentialsResourceDetails());
 	}
 
+	/**
+	 * tokenServices defines how to decode the access tokens
+	 * @return
+	 */
 	@Bean
 	public ResourceServerTokenServices tokenServices() {
 		return new UserInfoTokenService(sso.getUserInfoUri(), sso.getClientId());
@@ -51,6 +55,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/order").permitAll().anyRequest().authenticated();
+		http.authorizeRequests()
+			.antMatchers("/order/**").authenticated();
 	}
 }

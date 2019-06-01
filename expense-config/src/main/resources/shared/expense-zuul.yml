@@ -10,9 +10,23 @@ zuul:
       order:
          path: /order/**
          serviceId: expense-order
+         stripPrefix: false
+         sensitive-headers: 
       product:
          path: /product/**
          serviceId: expense-product
+         stripPrefix: false
+         sensitive-headers: 
       store:
          path: /store/**
          serviceId: expense-store
+         stripPrefix: false
+         sensitive-headers: 
+      oauth:
+         path: /uaa/**
+         serviceId: expense-auth
+         sensitive-headers: 
+logging:
+   level:
+      org:
+         springframework: DEBUG

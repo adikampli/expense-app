@@ -10,10 +10,9 @@ spring:
 security:
    oauth2:
       resource:
-         access-token-uri: http://localhost:9000/oauth/token
+         user-info-uri: http://localhost:9000/users/current
          grant-type: client_credentials
          scope: ui
-         user-info-uri: http://localhost:9000/users/current
 server:
    port: 8082
 eureka:
