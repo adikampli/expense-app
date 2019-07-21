@@ -1,14 +1,13 @@
 spring:
-   jpa:
-      show-sql: true
-      hibernate:
-         ddl-auto: none
-   datasource:
-      url: jdbc:mysql://localhost:3306/expense
-      username: root
-      password: root
+   data:
+      mongodb:
+         database: expense_db
+         host: ds143156.mlab.com
+         port: 43156
+         username: 
+         password: 
 server:
-   port: 8080
+   port: 8083
 eureka:
    client:
       default-zone: localhost:8761/eureka
