@@ -1,0 +1,6 @@
+spring:
+   application:
+      profiles: docker
+   cloud:
+      config:
+         uri: http://expense-config:7000

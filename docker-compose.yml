@@ -1,0 +1,63 @@
+version: '3'
+services:
+  expense-config:
+    build: 
+      context: ./expense-config/
+      dockerfile: Dockerfile
+    ports:
+      - 7000:7000
+    container_name: expense-config
+
+  expense-eureka:
+    build: 
+      context: ./expense-eureka/
+      dockerfile: Dockerfile
+    depends_on:
+      - expense-config
+    ports:
+      - 8761:8761
+    container_name: expense-eureka
+
+  expense-zuul:
+    build: 
+      context: ./expense-zuul/
+      dockerfile: Dockerfile
+    depends_on:
+      - expense-config
+      - expense-eureka
+    ports:
+      - 9761:9761
+    container_name: expense-zuul
+
+  expense-stores:
+    build: 
+      context: ./expense-stores/
+      dockerfile: Dockerfile
+    depends_on:
+      - expense-config
+      - expense-eureka
+    ports:
+      - 8083:8083
+    container_name: expense-stores
+
+  # expense-product:
+  #   build: 
+  #     context: ./expense-product/
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - expense-config
+  #     - expense-eureka
+  #   ports:
+  #     - 8081:8081
+#     container_name: expense-product
+
+  # expense-order:
+  #   build: 
+  #     context: ./expense-order/
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - expense-config
+  #     - expense-eureka
+  #   ports:
+  #     - 8082:8082
+#     container_name: expense-order

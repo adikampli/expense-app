@@ -12,11 +12,15 @@ node {
             sh '"$MVN_HOME/bin/mvn" -f ./expense-eureka/pom.xml -Dmaven.test.failure.ignore clean package'
             sh '"$MVN_HOME/bin/mvn" -f ./expense-zuul/pom.xml -Dmaven.test.failure.ignore clean package'
             sh '"$MVN_HOME/bin/mvn" -f ./expense-stores/pom.xml -Dmaven.test.failure.ignore clean package'
+            sh '"$MVN_HOME/bin/mvn" -f ./expense-order/pom.xml -Dmaven.test.failure.ignore clean package'
+            sh '"$MVN_HOME/bin/mvn" -f ./expense-product/pom.xml -Dmaven.test.failure.ignore clean package'
          } else {
             bat(/"%MVN_HOME%\bin\mvn" -f expense-config\pom.xml -Dmaven.test.failure.ignore clean package/)
             bat(/"%MVN_HOME%\bin\mvn" -f expense-eureka\pom.xml -Dmaven.test.failure.ignore clean package/)
             bat(/"%MVN_HOME%\bin\mvn" -f expense-zuul\pom.xml -Dmaven.test.failure.ignore clean package/)
             bat(/"%MVN_HOME%\bin\mvn" -f expense-stores\pom.xml -Dmaven.test.failure.ignore clean package/)
+            bat(/"%MVN_HOME%\bin\mvn" -f expense-order\pom.xml -Dmaven.test.failure.ignore clean package/)
+            bat(/"%MVN_HOME%\bin\mvn" -f expense-product\pom.xml -Dmaven.test.failure.ignore clean package/)
          }
       }
    }
@@ -26,5 +30,7 @@ node {
       archiveArtifacts 'expense-eureka/target/*.jar'
       archiveArtifacts 'expense-zuul/target/*.jar'
       archiveArtifacts 'expense-stores/target/*.jar'
+      archiveArtifacts 'expense-order/target/*.jar'
+      archiveArtifacts 'expense-product/target/*.jar'
    }
 }

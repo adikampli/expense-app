@@ -1,10 +1,6 @@
 spring:
    application:
-      name: expense-eureka
+      name: expense_eureka
    cloud:
       config:
          uri: http://localhost:7000
-eureka:
-   client:
-      register-with-eureka: false
-      fetch-registry: false

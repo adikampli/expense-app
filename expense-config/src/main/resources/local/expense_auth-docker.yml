@@ -1,0 +1,9 @@
+spring:
+   application:
+      profiles: docker
+   datasource:
+      url: jdbc:mysql://localhost:3306/expense
+      username: root
+      password: root
+server:
+   port: 9000

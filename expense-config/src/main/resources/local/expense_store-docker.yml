@@ -4,10 +4,11 @@ spring:
          database: expense_db
          host: ds143156.mlab.com
          port: 43156
-         username: 
-         password: 
+         username: dbuser
+         password: dbuser1
 server:
    port: 8083
 eureka:
    client:
-      default-zone: localhost:8761/eureka
+      serviceUrl:
+         defaultZone: http://expense-eureka:8761/eureka
