@@ -1,0 +1,12 @@
+spring:
+   application:
+      name: expense_config
+   cloud:
+      config:
+         server:
+            native:
+               search-locations: classpath:/local
+   profiles:
+      active: native,docker
+server:
+   port: 7000

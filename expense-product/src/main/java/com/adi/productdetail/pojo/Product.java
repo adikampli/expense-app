@@ -19,6 +19,7 @@ public class Product {
 	private String name;
 
 	@Column
+	@OneToOne
 	private float price;
 
 	@OneToOne

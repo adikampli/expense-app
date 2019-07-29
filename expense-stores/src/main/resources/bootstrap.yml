@@ -1,6 +1,6 @@
 spring:
    application:
-      name: expense-store
+      name: expense_store
    cloud:
       config:
          uri: http://localhost:7000

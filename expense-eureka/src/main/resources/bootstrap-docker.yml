@@ -1,0 +1,7 @@
+spring:
+   application:
+      name: expense_eureka      
+      profiles: docker
+   cloud:
+      config:
+         uri: http://expense-config:7000
