@@ -9,24 +9,24 @@ zuul:
    routes:
       order:
          path: /order/**
-         serviceId: expense-order
+         serviceId: expense_order
          stripPrefix: false
          sensitive-headers: 
       product:
          path: /product/**
-         serviceId: expense-product
+         serviceId: expense_product
          stripPrefix: false
          sensitive-headers: 
       store:
          path: /store/**
-         serviceId: expense-store
+         serviceId: expense_store
          stripPrefix: false
          sensitive-headers: 
       oauth:
          path: /uaa/**
-         serviceId: expense-auth
+         serviceId: expense_auth
          sensitive-headers: 
 logging:
    level:
       org:
-         springframework: DEBUG
+         springframework: INFO
