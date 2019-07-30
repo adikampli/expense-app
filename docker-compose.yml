@@ -17,35 +17,35 @@ services:
     ports:
       - 8761:8761
     container_name: expense-eureka
+    command: ["./wait-for-it.sh","expense-config:7000","--timeout=100","--","/usr/local/bin/start.sh"]
 
   expense-zuul:
     build: 
       context: ./expense-zuul/
       dockerfile: Dockerfile
     depends_on:
-      - expense-config
       - expense-eureka
     ports:
       - 9761:9761
     container_name: expense-zuul
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/local/bin/start.sh"]
 
   expense-stores:
     build: 
       context: ./expense-stores/
       dockerfile: Dockerfile
     depends_on:
-      - expense-config
       - expense-eureka
     ports:
       - 8083:8083
     container_name: expense-stores
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/local/bin/start.sh"]
 
   # expense-product:
   #   build: 
   #     context: ./expense-product/
   #     dockerfile: Dockerfile
   #   depends_on:
-  #     - expense-config
   #     - expense-eureka
   #   ports:
   #     - 8081:8081
@@ -56,7 +56,6 @@ services:
   #     context: ./expense-order/
   #     dockerfile: Dockerfile
   #   depends_on:
-  #     - expense-config
   #     - expense-eureka
   #   ports:
   #     - 8082:8082
