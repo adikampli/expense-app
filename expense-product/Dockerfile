@@ -7,6 +7,7 @@ RUN chmod +x wait-for-it.sh
 ADD ./start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-ENTRYPOINT ["java", "-jar",  "-Dspring.profiles.active=docker", "/usr/share/expense/expense-product.jar"]
+WORKDIR /usr/local/bin/
+ENTRYPOINT ["./start.sh"]
 
 ADD target/expense-product-0.0.1-SNAPSHOT.jar /usr/share/expense/expense-product.jar

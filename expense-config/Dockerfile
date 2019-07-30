@@ -7,6 +7,7 @@ RUN chmod +x wait-for-it.sh
 ADD ./start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-ENTRYPOINT ["java", "-jar", "/usr/share/expense/expense-config.jar"]
+WORKDIR /usr/local/bin/
+ENTRYPOINT ["./start.sh"]
 
 ADD target/expense-config-0.0.1-SNAPSHOT.jar /usr/share/expense/expense-config.jar
