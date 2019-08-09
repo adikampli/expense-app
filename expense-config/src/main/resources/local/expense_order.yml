@@ -1,12 +1,3 @@
-spring:
-   jpa:
-      show-sql: true
-      hibernate:
-         ddl-auto: none
-   datasource:
-      url: jdbc:mysql://localhost:3306/expense
-      username: root
-      password: root
 server:
    port: 8082
 eureka:
@@ -16,4 +7,4 @@ eureka:
 logging:
    level:
       org:
-         springframework: DEBUG
+         springframework: INFO

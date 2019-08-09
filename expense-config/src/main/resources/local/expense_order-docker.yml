@@ -11,4 +11,4 @@ server:
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://expense-eureka:8761/eureka
+         defaultZone: http://expense_eureka:8761/eureka

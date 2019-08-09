@@ -1,11 +1,7 @@
 spring:
    data:
       mongodb:
-         database: expense_db
-         host: ds143156.mlab.com
-         port: 43156
-         username: dbuser
-         password: dbuser1
+         uri: mongodb://dbuser:dbuser1@ds143156.mlab.com:43156/expense_db
 server:
    port: 8083
 eureka:

@@ -4,9 +4,7 @@ spring:
    cloud:
       config:
          server:
-            native:
-               search-locations: classpath:/local
-   profiles:
-      active: native,docker
+            git:
+               uri: https://github.com/adikampli/expense-config.git
 server:
    port: 7000
