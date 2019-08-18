@@ -1,6 +1,7 @@
 package com.adi.storedetail.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +25,13 @@ public class StoreController {
 	}
 
 	@GetMapping(path = "/store/{storeId}")
-	public Store getStoreDetails(@PathVariable(name = "storeId") int storeId) {
-		List<Store> store = storeRepo.findAll();
-		Store s = null;
-		if (store.size() > 0) {
-			s = store.get(storeId);
+	public Store getStoreDetails(@PathVariable(name = "storeId") String storeId) {
+		Optional<Store> store = storeRepo.findById(storeId);
+
+		if (store.isPresent()) {
+			return store.get();
 		}
-		return s;
+		return null;
 	}
 
 	@PostMapping(path = "/store")

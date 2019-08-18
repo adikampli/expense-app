@@ -1,9 +1,9 @@
 package com.adi.storedetail.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.adi.storedetail.pojo.Store;
 
-public interface StoreRepository extends MongoRepository<Store, String>{
+public interface StoreRepository extends CrudRepository<Store, String>{
 
 }

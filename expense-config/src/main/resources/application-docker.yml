@@ -1,0 +1,10 @@
+spring:
+   application:
+      name: expense_config
+   cloud:
+      config:
+         server:
+            git:
+               uri: https://github.com/adikampli/expense-config.git
+server:
+   port: 7000

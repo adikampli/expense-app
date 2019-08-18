@@ -1,3 +1,12 @@
+spring:
+   jpa:
+      hibernate:
+         ddl-auto: none
+      show-sql: true
+   datasource:
+      url: jdbc:mysql://expense.cgi3uovjwl00.us-east-1.rds.amazonaws.com:3306/expense
+      username: admin
+      password: ${MYSQL_PASSWORD}
 server:
    port: 8082
 eureka:
