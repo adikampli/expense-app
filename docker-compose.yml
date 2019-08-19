@@ -1,6 +1,6 @@
 version: '3'
 services:
-  expense_config:
+  expense-config:
     build: 
       context: ./expense-config/
       dockerfile: Dockerfile
@@ -8,68 +8,68 @@ services:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     ports:
       - 7000:7000
-    container_name: expense_config
+    container_name: expense-config
 
-  expense_eureka:
+  expense-eureka:
     build: 
       context: ./expense-eureka/
       dockerfile: Dockerfile
     environment:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
-      - expense_config
+      - expense-config
     ports:
       - 8761:8761
-    container_name: expense_eureka
+    container_name: expense-eureka
 
-  expense_zuul:
+  expense-zuul:
     build: 
       context: ./expense-zuul/
       dockerfile: Dockerfile
     environment:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
-      - expense_eureka
+      - expense-eureka
     ports:
       - 9761:9761
-    container_name: expense_zuul
-    command: ["./wait-for-it.sh","expense_eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
+    container_name: expense-zuul
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
 
-  expense_stores:
+  expense-stores:
     build: 
       context: ./expense-stores/
       dockerfile: Dockerfile
     environment:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
-      - expense_eureka
+      - expense-eureka
     ports:
       - 8083:8083
-    container_name: expense_stores
-    command: ["./wait-for-it.sh","expense_eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
+    container_name: expense-stores
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
 
-  expense_product:
+  expense-product:
     build: 
       context: ./expense-product/
       dockerfile: Dockerfile
     environment:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
-      - expense_eureka
+      - expense-eureka
     ports:
       - 8081:8081
-    container_name: expense_product
-    command: ["./wait-for-it.sh","expense_eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
+    container_name: expense-product
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
 
-  expense_order:
+  expense-order:
     build: 
       context: ./expense-order/
       dockerfile: Dockerfile
     environment:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
-      - expense_eureka
+      - expense-eureka
     ports:
       - 8082:8082
-    container_name: expense_order
-    command: ["./wait-for-it.sh","expense_eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
+    container_name: expense-order
+    command: ["./wait-for-it.sh","expense-eureka:8761","--timeout=100","--","/usr/share/expense/start.sh"]
