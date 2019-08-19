@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/share/expense/expense-config.jar
+java -jar -Dspring.profiles.active=docker /usr/share/expense/expense-config.jar
