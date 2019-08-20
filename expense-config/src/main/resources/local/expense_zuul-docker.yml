@@ -2,31 +2,42 @@ server:
    port: 9761
 eureka:
    client:
+      fetchRegistry: true
       serviceUrl:
          defaultZone: http://expense-eureka:8761/eureka
+ribbon:
+   ReadTimeout: 20000
+   ConnectTimeout: 20000
 zuul:
    ignoredServices: '*'
    routes:
       order:
          path: /order/**
-         serviceId: expense-order
+         serviceId: expense_order
          stripPrefix: false
          sensitive-headers: 
       product:
          path: /product/**
-         serviceId: expense-product
+         serviceId: expense_product
          stripPrefix: false
          sensitive-headers: 
       store:
          path: /store/**
-         serviceId: expense-store
+         serviceId: expense_store
          stripPrefix: false
          sensitive-headers: 
       oauth:
          path: /uaa/**
-         serviceId: expense-auth
+         serviceId: expense_auth
          sensitive-headers: 
 logging:
    level:
       org:
-         springframework: INFO
+         springframework: DEBUG
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 20000
