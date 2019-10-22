@@ -19,17 +19,17 @@ public class Store {
 	@Column
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int storeId;
 	
 	@Column
 	private String name;
 
 	public int getId() {
-		return id;
+		return storeId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.storeId = id;
 	}
 
 	public String getName() {
@@ -42,11 +42,11 @@ public class Store {
 
 	@Override
 	public String toString() {
-		return "Store [storeId=" + id + ", name=" + name + "]";
+		return "Store [storeId=" + storeId + ", name=" + name + "]";
 	}
 
 	public Store(int id, String name) {
-		this.id = id;
+		this.storeId = id;
 		this.name = name;
 	}
 
