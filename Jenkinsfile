@@ -18,7 +18,11 @@ node {
    }
    stage('Build Image') {
       // junit '**/target/surefire-reports/TEST-*.xml'
-      sh 'docker build -t expense-config .'
+      if (isUnix()) {
+            sh 'docker build -t expense-config -f ./expense-config/Dockerfile ./expense-config' 
+         } else {
+            bat(/docker build -t expense-config -f expense-config\Dockerfile expense-config/)
+         }
       
    }
 }

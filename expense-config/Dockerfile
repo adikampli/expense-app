@@ -1,13 +1,14 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jdk-alpine
 MAINTAINER Adi
 
-ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh wait-for-it.sh
-RUN chmod +x wait-for-it.sh
+WORKDIR /usr/share/expense
 
-ADD ./start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+# ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh wait-for-it.sh
+# RUN chmod +x wait-for-it.sh
 
-WORKDIR /usr/local/bin/
-ENTRYPOINT ["./start.sh"]
+# ADD ./start.sh start.sh
+# RUN chmod +x start.sh
 
-ADD target/expense-config-0.0.1-SNAPSHOT.jar /usr/share/expense/expense-config.jar
+# CMD ["./start.sh"]
+
+ADD target/expense-config-0.0.1-SNAPSHOT.jar expense-config.jar

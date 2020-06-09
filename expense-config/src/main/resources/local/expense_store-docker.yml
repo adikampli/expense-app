@@ -1,14 +1,15 @@
 spring:
-   data:
-      mongodb:
-         database: expense_db
-         host: ds143156.mlab.com
-         port: 43156
-         username: dbuser
-         password: dbuser1
+   jpa:
+      hibernate:
+         ddl-auto: none
+      show-sql: false
+   datasource:
+      url: jdbc:mysql://expense.cgi3uovjwl00.us-east-1.rds.amazonaws.com:3306/expense
+      username: admin
+      password: ${MYSQL_PASSWORD}
 server:
    port: 8083
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://expense_eureka:8761/eureka
+         defaultZone: http://expense-eureka:8761/eureka

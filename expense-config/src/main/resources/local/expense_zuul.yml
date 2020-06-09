@@ -1,9 +1,15 @@
 server:
    port: 9761
 eureka:
+   instance:
+      hostname: localhost
    client:
+      fetchRegistry: true
       serviceUrl:
          defaultZone: http://localhost:8761/eureka
+ribbon:
+   ReadTimeout: 10000
+   ConnectTimeout: 10000
 zuul:
    ignoredServices: '*'
    routes:
@@ -30,3 +36,10 @@ logging:
    level:
       org:
          springframework: INFO
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 10000

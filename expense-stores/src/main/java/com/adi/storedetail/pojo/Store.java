@@ -3,27 +3,33 @@
  */
 package com.adi.storedetail.pojo;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author adikampl
  *
  */
-@Document
+@Entity
 public class Store {
 
+	@Column
 	@Id
-	private String id;
-
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int storeId;
+	
+	@Column
 	private String name;
 
-	public String getId() {
-		return id;
+	public int getId() {
+		return storeId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(int id) {
+		this.storeId = id;
 	}
 
 	public String getName() {
@@ -36,11 +42,11 @@ public class Store {
 
 	@Override
 	public String toString() {
-		return "Store [storeId=" + id + ", name=" + name + "]";
+		return "Store [storeId=" + storeId + ", name=" + name + "]";
 	}
 
-	public Store(String id, String name) {
-		this.id = id;
+	public Store(int id, String name) {
+		this.storeId = id;
 		this.name = name;
 	}
 

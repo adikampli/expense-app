@@ -1,3 +1,6 @@
+spring:
+   application:
+      name: expense_eureka
 server:
    port: 8761
 eureka:
